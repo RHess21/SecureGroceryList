@@ -7,7 +7,7 @@ windll.shcore.SetProcessDpiAwareness(1)
 
 #import the listapp for a correct login
 import ListApp
-
+import Register
 def main():
     def login():
         # Get the entered username and password
@@ -19,7 +19,10 @@ def main():
             ListApp.ListMain()
         else:
             label_result.config(text="Username or password was incorrect, please try again", fg="red")
-
+    def register():
+        Register.register_account()
+        
+        
     # Create the main window and how big it should be
     window = tk.Tk()
     window.geometry("800x500")
@@ -44,6 +47,9 @@ def main():
     # Create the login button
     button_login = tk.Button(window, text="Login", bg="grey", command=login)
     button_login.pack()
+    
+    button_register = tk.Button(window, text="Register", bg="grey", command=register)
+    button_register.pack()
 
     # Create the result label
     label_result = tk.Label(window, text="", bg="grey", font=("Arial", 12))
