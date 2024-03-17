@@ -8,17 +8,46 @@ windll.shcore.SetProcessDpiAwareness(1)
 #import the listapp for a correct login
 import ListApp
 import Register
+import pyodbc
+import hashlib
+
 def main():
     def login():
-        # Get the entered username and password
-        username = entry_username.get()
-        password = entry_password.get()
         
-        # Check if the username and password are correct
-        if username == "admin" and password == "password":
-            ListApp.ListMain()
+        if not entry_username.get() or not entry_password.get():
+            label_result.config(text="Please fill in all fields!", fg="red")
+            return
         else:
-            label_result.config(text="Username or password was incorrect, please try again", fg="red")
+            # Get the entered username and password
+            username = entry_username.get()
+            password = entry_password.get()
+
+            # Connect to the database
+            conn = pyodbc.connect('Driver={SQL Server}; Server=localhost\\sqlexpress; Database=Grocery_List; Trusted_Connection=yes;')
+            mycursor = conn.cursor()
+            
+            #Gets the email from the database
+            mycursor.execute("SELECT * FROM Accounts WHERE Email = ?", (username,))
+            checker = mycursor.fetchone()
+            conn.commit()
+            
+            #Checks to see if an email was found in the database
+            if(checker):
+                # print("Email found!")
+                try:
+                    #Compares the password to the hashed password in the database
+                    if(checker[4] == hashlib.md5(password.encode()).hexdigest()):
+                        del checker
+                        del password
+                        window.destroy()
+                        ListApp.ListMain()
+                    else:
+                        label_result.config(text="Username or password was incorrect, please try again", fg="red")
+                except:
+                    print("DB Failure!")
+            else:
+                label_result.config(text="Email was not found", fg="red")
+            conn.close()
     def register():
         Register.register_account()
         

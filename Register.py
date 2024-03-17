@@ -1,9 +1,13 @@
 from tkinter import Tk, Label, Entry, Button
 from ctypes import windll
 import re
+import InputCheck
+import pyodbc
+import hashlib
+
 windll.shcore.SetProcessDpiAwareness(1)
 
-
+# Function to register an account
 def register_account():
     def submit():
         first_name = first_name_entry.get()
@@ -14,25 +18,25 @@ def register_account():
         #SECURITY CHECKS FOR PASSWORD
         if not first_name or not last_name or not email or not password:
              label_result.config(text="Please fill in all fields!", fg="red")
-
-        # Regular expression pattern for password security checks
-        pattern1 = r"^([A-Za-z0-9]+)@([A-Za-z0-9]+)\.([A-Za-z]{2,})$" #Email pattern
-        pattern2 = r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"          #Password pattern
-        pattern3 = r"^([A-Za-z])$"                                      #Name pattern
-
-        if not re.match(pattern2, password):
-            label_result.config(text="Password must contain at least one letter and one digit, and be at least 8 characters long!", fg="red")
         else:
-            if not re.match(pattern1, email):
-                label_result.config(text="Email is not valid!", fg="red")
-            else:
-                if not re.match(pattern3, first_name) or not re.match(pattern3, last_name):
-                    label_result.config(text="First and Last name must contain only letters!", fg="red")
-                else:
-                    label_result.config(text="Account creating successfully, you may now close this tab.", fg="Green")    
-                
-                
-        
+            checkStatus = InputCheck.check_input(email, password, first_name, last_name, label_result)
+            
+        if(checkStatus == True):
+            try:
+                conn = pyodbc.connect('Driver={SQL Server}; Server=localhost\\sqlexpress; Database=Grocery_List; Trusted_Connection=yes;')
+                mycursor = conn.cursor()
+                mycursor.execute("INSERT INTO Accounts (FirstName, LastName, Email, Password) VALUES (?, ?, ?, ?)", (first_name, last_name, email, hashlib.md5(password.encode()).hexdigest()))
+                conn.commit()
+                conn.close()
+                del first_name
+                del last_name
+                del email
+                del password
+                label_result.config(text="Account registered successfully!", fg="green")
+            except:
+                print("DB Error!")   
+        else:
+            print("Account registration failed!")
 
     # Create the main window
     window = Tk()
@@ -72,4 +76,4 @@ def register_account():
     # Start the main loop
     window.mainloop()
 
-register_account()
+#register_account()
