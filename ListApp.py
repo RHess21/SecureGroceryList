@@ -1,9 +1,32 @@
 import tkinter as tk
+import pyodbc
 # Set the DPI awareness, so the window doesn't get blurry on high DPI displays
 from ctypes import windll
 windll.shcore.SetProcessDpiAwareness(1)
-def ListMain():
+
+
+
+def ListMain(accID):
     #Adds the item in the textbox to the list on press
+    def get_info():
+        print(accID)
+        
+        conn = pyodbc.connect('Driver={SQL Server}; Server=localhost\\sqlexpress; Database=Grocery_List; Trusted_Connection=yes;')
+        print("Connected!")
+        mycursor = conn.cursor()
+        mycursor.execute ("SELECT FirstName, LastName FROM Accounts WHERE AccID = ?", (accID,))
+        print("Executed!")
+        acc = mycursor.fetchone()
+        conn.commit()
+        print(acc)
+        conn.close()
+        fname= acc[0]
+        lname= acc[1]
+        del acc
+        return  fname+ " " + lname
+        
+            
+        
     def add_item():
         item = entry_listItem.get()
         if item:
@@ -26,6 +49,10 @@ def ListMain():
     #Start of Application
     label_title = tk.Label(window, text="Grocery List App", bg="grey", font=("Arial", 24))
     label_title.pack()
+    
+    #Label for the username
+    Label_FirstName = tk.Label(window, text="Welcome "+get_info(), bg="grey", font=("Arial", 18))
+    Label_FirstName.pack(pady=10, padx=75, side="top", anchor='w')
     
     #List Label
     label_List = tk.Label(window, text="List", bg="grey", font=("Arial", 18))
@@ -50,5 +77,3 @@ def ListMain():
     window.mainloop()
     
     
-
-# ListMain()

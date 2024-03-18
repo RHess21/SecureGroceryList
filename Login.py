@@ -10,7 +10,6 @@ import ListApp
 import Register
 import pyodbc
 import hashlib
-
 def main():
     def login():
         
@@ -30,24 +29,21 @@ def main():
             mycursor.execute("SELECT * FROM Accounts WHERE Email = ?", (username,))
             checker = mycursor.fetchone()
             conn.commit()
-            
+            conn.close()
             #Checks to see if an email was found in the database
             if(checker):
                 # print("Email found!")
-                try:
-                    #Compares the password to the hashed password in the database
-                    if(checker[4] == hashlib.md5(password.encode()).hexdigest()):
-                        del checker
-                        del password
-                        window.destroy()
-                        ListApp.ListMain()
-                    else:
-                        label_result.config(text="Username or password was incorrect, please try again", fg="red")
-                except:
-                    print("DB Failure!")
+                #Compares the password to the hashed password in the database
+                if(checker[4] == hashlib.md5(password.encode()).hexdigest()):
+                    del password
+                    window.destroy()
+                    ListApp.ListMain(int(checker[0]))
+                    del checker
+                else:
+                    label_result.config(text="Username or password was incorrect, please try again", fg="red")
             else:
                 label_result.config(text="Email was not found", fg="red")
-            conn.close()
+            
     def register():
         Register.register_account()
         
