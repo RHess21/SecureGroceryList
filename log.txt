@@ -1,0 +1,57 @@
+2024-03-28 15:15:39,809 - DEBUG - This is a debug message
+2024-03-28 15:15:39,809 - INFO - This is an info message
+2024-03-28 15:15:39,809 - WARNING - This is a warning message
+2024-03-28 15:15:39,809 - ERROR - This is an error message
+2024-03-28 15:15:39,809 - CRITICAL - This is a critical message
+2024-03-28 15:44:16,344 - DEBUG - 2024-03-28 15:44:16.344312 - This is a debug message
+2024-03-28 15:44:16,344 - INFO - 2024-03-28 15:44:16.344312 - This is an info message
+2024-03-28 15:44:16,344 - WARNING - 2024-03-28 15:44:16.344312 - This is a warning message
+2024-03-28 15:44:16,344 - ERROR - 2024-03-28 15:44:16.344312 - This is an error message
+2024-03-28 15:44:16,344 - CRITICAL - 2024-03-28 15:44:16.344312 - Database Failure!
+2024-03-28 15:44:34,250 - INFO - 2024-03-28 15:44:34.250113 - Database Connection Successful for Login!
+2024-03-28 15:44:35,592 - INFO - 2024-03-28 15:44:35.592827 - Login Successful!
+2024-03-28 15:45:05,839 - DEBUG - 2024-03-28 15:45:05.839244 - This is a debug message
+2024-03-28 15:45:05,839 - INFO - 2024-03-28 15:45:05.839244 - This is an info message
+2024-03-28 15:45:05,839 - WARNING - 2024-03-28 15:45:05.839244 - This is a warning message
+2024-03-28 15:45:05,839 - ERROR - 2024-03-28 15:45:05.839244 - This is an error message
+2024-03-28 15:45:05,839 - CRITICAL - 2024-03-28 15:45:05.839244 - Database Failure!
+2024-03-28 15:45:30,691 - INFO - 2024-03-28 15:45:30.691726 - All Fields are correct!
+2024-03-28 15:45:30,732 - INFO - 2024-03-28 15:45:30.732490 - Account registered successfully!
+2024-03-28 15:45:47,061 - INFO - 2024-03-28 15:45:47.061583 - Database Connection Successful for Login!
+2024-03-28 15:45:48,139 - INFO - 2024-03-28 15:45:48.139484 - Login Successful!
+2024-03-28 15:45:48,147 - CRITICAL - 2024-03-28 15:45:48.147916 - Database Failure!
+2024-03-28 15:54:14,276 - DEBUG - 2024-03-28 15:54:14.276299 - This is a debug message
+2024-03-28 15:54:14,276 - INFO - 2024-03-28 15:54:14.276299 - This is an info message
+2024-03-28 15:54:14,276 - WARNING - 2024-03-28 15:54:14.276299 - This is a warning message
+2024-03-28 15:54:14,276 - ERROR - 2024-03-28 15:54:14.276299 - This is an error message
+2024-03-28 15:54:14,276 - CRITICAL - 2024-03-28 15:54:14.276299 - Database Failure!
+2024-03-28 15:54:23,987 - INFO - 2024-03-28 15:54:23.987020 - Database Connection Successful for Login!
+2024-03-28 15:54:23,987 - ERROR - 2024-03-28 15:54:23.987020 - Incorrect password detected!
+2024-03-28 15:54:31,814 - INFO - 2024-03-28 15:54:31.814291 - Database Connection Successful for Login!
+2024-03-28 15:54:31,814 - ERROR - 2024-03-28 15:54:31.814291 - Incorrect password detected!
+2024-03-28 15:54:32,404 - INFO - 2024-03-28 15:54:32.404004 - Database Connection Successful for Login!
+2024-03-28 15:54:32,404 - ERROR - 2024-03-28 15:54:32.404004 - Incorrect password detected!
+2024-03-28 15:54:32,569 - INFO - 2024-03-28 15:54:32.569688 - Database Connection Successful for Login!
+2024-03-28 15:54:32,569 - ERROR - 2024-03-28 15:54:32.569688 - Incorrect password detected!
+2024-03-28 15:54:32,715 - INFO - 2024-03-28 15:54:32.715415 - Database Connection Successful for Login!
+2024-03-28 15:54:32,715 - ERROR - 2024-03-28 15:54:32.715415 - Incorrect password detected!
+2024-03-28 15:54:32,844 - INFO - 2024-03-28 15:54:32.844789 - Database Connection Successful for Login!
+2024-03-28 15:54:32,844 - ERROR - 2024-03-28 15:54:32.844789 - Incorrect password detected!
+2024-03-28 15:54:33,115 - INFO - 2024-03-28 15:54:33.115346 - Database Connection Successful for Login!
+2024-03-28 15:54:33,115 - ERROR - 2024-03-28 15:54:33.115346 - Incorrect password detected!
+2024-03-28 15:54:33,279 - INFO - 2024-03-28 15:54:33.279959 - Database Connection Successful for Login!
+2024-03-28 15:54:33,279 - ERROR - 2024-03-28 15:54:33.279959 - Incorrect password detected!
+2024-03-28 15:54:33,467 - INFO - 2024-03-28 15:54:33.467137 - Database Connection Successful for Login!
+2024-03-28 15:54:33,467 - ERROR - 2024-03-28 15:54:33.467137 - Incorrect password detected!
+2024-03-28 15:54:33,650 - INFO - 2024-03-28 15:54:33.650564 - Database Connection Successful for Login!
+2024-03-28 15:54:33,650 - ERROR - 2024-03-28 15:54:33.650564 - Incorrect password detected!
+2024-03-28 15:54:47,505 - INFO - 2024-03-28 15:54:47.505803 - Database Connection Successful for Login!
+2024-03-28 15:54:47,604 - INFO - 2024-03-28 15:54:47.604956 - Database Connection Successful for ListMain!
+2024-03-28 15:54:51,944 - INFO - 2024-03-28 15:54:51.944802 - Login Successful!
+2024-03-28 16:15:02,698 - INFO -  - Database Connection Successful for Login!
+2024-03-28 16:15:02,784 - INFO -  - Database Connection Successful for ListMain!
+2024-03-28 16:15:03,814 - INFO -  - Login Successful!
+2024-03-28 16:20:20,126 - INFO -  - All Fields are correct!
+2024-03-28 16:20:20,169 - INFO - - Account registered successfully!
+2024-03-28 16:22:25,841 - INFO -  - All Fields are correct!
+2024-03-28 16:22:25,865 - INFO - - Account registered successfully!

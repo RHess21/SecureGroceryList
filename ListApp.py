@@ -1,5 +1,7 @@
 import tkinter as tk
 import pyodbc
+import Logger
+import datetime
 # Set the DPI awareness, so the window doesn't get blurry on high DPI displays
 from ctypes import windll
 windll.shcore.SetProcessDpiAwareness(1)
@@ -7,26 +9,7 @@ windll.shcore.SetProcessDpiAwareness(1)
 
 
 def ListMain(accID):
-    #Adds the item in the textbox to the list on press
-    def get_info():
-        print(accID)
-        
-        conn = pyodbc.connect('Driver={SQL Server}; Server=localhost\\sqlexpress; Database=Grocery_List; Trusted_Connection=yes;')
-        print("Connected!")
-        mycursor = conn.cursor()
-        mycursor.execute ("SELECT FirstName, LastName FROM Accounts WHERE AccID = ?", (accID,))
-        print("Executed!")
-        acc = mycursor.fetchone()
-        conn.commit()
-        print(acc)
-        conn.close()
-        fname= acc[0]
-        lname= acc[1]
-        del acc
-        return  fname+ " " + lname
-        
-            
-        
+    #Adds the item in the textbox to the list on press       
     def add_item():
         item = entry_listItem.get()
         if item:
@@ -51,7 +34,7 @@ def ListMain(accID):
     label_title.pack()
     
     #Label for the username
-    Label_FirstName = tk.Label(window, text="Welcome "+get_info(), bg="grey", font=("Arial", 18))
+    Label_FirstName = tk.Label(window, text="Welcome "+get_info(accID), bg="grey", font=("Arial", 18))
     Label_FirstName.pack(pady=10, padx=75, side="top", anchor='w')
     
     #List Label
@@ -76,4 +59,19 @@ def ListMain(accID):
     
     window.mainloop()
     
-    
+def get_info(accID):
+        try:
+            conn = pyodbc.connect('Driver={SQL Server}; Server=localhost\\sqlexpress; Database=Grocery_List; Trusted_Connection=yes;')
+            mycursor = conn.cursor()
+            mycursor.execute ("SELECT FirstName, LastName FROM Accounts WHERE AccID = ?", (accID,))
+            acc = mycursor.fetchone()
+            conn.commit()
+            conn.close()
+            Logger.logger.info(f' - Database Connection Successful for ListMain!')
+        except:
+            Logger.logger.critical(f' - Database Failure for ListMain!')
+            return
+        fname= acc[0]
+        lname= acc[1]
+        del acc
+        return  fname+ " " + lname
